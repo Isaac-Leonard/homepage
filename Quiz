@@ -1,0 +1,49 @@
+
+<html>
+<head>
+<title>Forensics quiz</title>
+<script type="text/javascript">
+var score=0, name;
+var yes=function(){alert("Correct!")}, no=function(){alert("wrong!")};
+var q1="<h3>Question 1</h3><p/>Which of the following is an example of forensic evidence?<p/><button onclick='yes(); score+=10; qf2();'>Fingerprints</button><button onclick='no(); qf2();'>Suicide note</button><button onclick='no(); qf2();'>Witness testimony</button><button onclick='no(); qf2();'>legal papers</button>";
+var q2="<h3>Question 2</h3><p/>If Jon's DNA is at a crime scene, did Jon commit the crime?<p/><button onclick='no(); qf3();'>Yes</button><button onclick='no(); qf3();'>No</button><button onclick='yes(); score+=10; qf3();'>Possibly</button><button onclick='no(); qf3();'>All of the above</button>";
+var q3="<h3>Question 3</h3></p>If a police officer asks for a sample of your DNA are you legally required to give your DNA?<p/><button onclick='no(); qf4();'>Yes always</button><button onclick='yes(); score+=10; qf4();'>yes, if you are suspected of or have commited a  serious crime in the last six months</button><button onclick='no(); qf4();'>No unless you are a legal minor or do not have  Australian citizenship</button><button onclick='no(); qf4();'>No, never</button>";
+var q4="<h3>Question 4</h3><p/>Who was the first person to use fingerprints as evidence in a criminal trial?<p/><button onclick='no(); qf5();'>Robert Langdon</button><button onclick='no(); qf5();'/>Jon Doe</button><button onclick='no(); qf5()'>Sherlock Holmes</button><button onclick='yes(); score+=10; qf5();'>Juan Vucetich</button>";
+var q5="<h3>Question</h3><p/>What is the definition of forensics?<p/><button onclick='no(); end();'>The study of criminals</button><button onclick='no(); end();'>There is no dictionary definition</button><onclick='no(); end();'>The investigation of violent crimes</button><button onclick='yes(); score+=10; end();'>scientific tests or techniques used in connection with the detection of crime</button>";
+function start(){
+for(name=0;name<3;--name){
+ name=prompt("Hello! What is your name","");
+if (name=="") {alert("You must enter your name");}
+else {alert("Hello "+name); document.getElementById("name").innerHTML="<h2>"+name+"</h2>"; break};}
+document . getElementById ( 'screen' ). innerHTML =q1; 
+};
+function qf2(){
+document.getElementById("screen").innerHTML=q2
+};
+function qf3(){
+document.getElementById("screen").innerHTML=q3;
+};
+function qf4(){
+document.getElementById("screen").innerHTML=q4;
+};
+function qf5(){
+document.getElementById("screen").innerHTML=q5;
+};
+function end(){
+document.getElementById("screen").innerHTML="<h3>The end</h3><p/>You scored "+score+" points out of a possible 50 points";
+};
+var s=0, m=0;
+function ts(){
+++s;
+if (s==60) {++m; s=0;};
+document.getElementById("ts").innerHTML="Time taken: "+m+" minutes and "+s+" seconds<p/>You have "+score+"points";
+};
+</script>
+</head>
+<body onload="start(); setInterval(ts, 1000);">
+<h1><a href="http://htmlpreview.github.io/?https://github.com/Utopianii/homepage/blob/master/Main%20page.html">Utopian</a></h1>
+<h2 id="name"></h2>
+<p id="screen">Hello World!</p>
+<p id="ts"><p/>
+</body>
+</html>
