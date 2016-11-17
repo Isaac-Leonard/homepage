@@ -9,12 +9,40 @@ var q1="<h3>Question 1</h3><p/>Which of the following is an example of forensic 
 var q2="<h3>Question 2</h3><p/>If Jon's DNA is at a crime scene, did Jon commit the crime?<p/><button onclick='no(); qf3();'>Yes</button><button onclick='no(); qf3();'>No</button><button onclick='yes(); score+=10; qf3();'>Possibly</button><button onclick='no(); qf3();'>All of the above</button>";
 var q3="<h3>Question 3</h3></p>If a police officer asks for a sample of your DNA are you legally required to give your DNA?<p/><button onclick='no(); qf4();'>Yes always</button><button onclick='yes(); score+=10; qf4();'>yes, if you are suspected of or have commited a  serious crime in the last six months</button><button onclick='no(); qf4();'>No unless you are a legal minor or do not have  Australian citizenship</button><button onclick='no(); qf4();'>No, never</button>";
 var q4="<h3>Question 4</h3><p/>Who was the first person to use fingerprints as evidence in a criminal trial?<p/><button onclick='no(); qf5();'>Robert Langdon</button><button onclick='no(); qf5();'/>Jon Doe</button><button onclick='no(); qf5()'>Sherlock Holmes</button><button onclick='yes(); score+=10; qf5();'>Juan Vucetich</button>";
-var q5="<h3>Question</h3><p/>What is the definition of forensics?<p/><button onclick='no(); end();'>The study of criminals</button><button onclick='no(); end();'>There is no dictionary definition</button><onclick='no(); end();'>The investigation of violent crimes</button><button onclick='yes(); score+=10; end();'>scientific tests or techniques used in connection with the detection of crime</button>";
+var q5='<h3>Question 5</h3><p/>What is the definition of forensics?<p/><button onclick="no(); qf6();">The study of criminals</button><button onclick="no(); qf6();">There is no dictionary definition</button><button onclick="no(); qf6();">The investigation of violent crimes</button><button onclick="yes(); score+=10; qf6();">scientific tests or techniques used in connection with the detection of crime</button>';
+var q6='<h3>Question 6</h3><p/>When was chemical testing first used to convict a poisoner?<p/><button onclick="yes(); score+=10; qf7();">1836</button><button onclick="no(); qf7();">256</button><button onclick="no(); qf7();">2019</button><button onclick="no(); qf7()">never</button>';
+var q7='<h3>Question 7</h3><p/>DNA is unique to?<p/><button onclick="no(); qf8();">each individual human</button><button onclick="no(); qf8();">Each individual living thing</button><button onclick="yes(); score+=10; qf8();">Each individual living thing apart from single cells and fraternal twins</button ><button onclick="no(); qf8();">alien life and artificial intelligence</button>';
+var q8='<h3>Question 8</h3><p/>What is the focus of Forensic entomology?<p/><button onclick="no(); qf9();">firearms</button><button onclick="no(); qf9();">vehicles and tyres</button><button onclick="yes(); score+=10; qf9();">insects</button><button onclick="no(); qf9();">death</button>';
+var q9='<h3>Question 9</h3><p/>Hhow many of Julius Ceasar\'s 23 stab wounds were fatal?<p/><button onclick=" alert( \'Exactly \'); score+=20; end();">lol who</button><button onclick="yes(); score+=10; end();">one</button><button onclick="no(); end();">all of them</button><button onclick="no(); end();">none of them</button>';
+
+ function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function start(){
 for(name=0;name<3;--name){
- name=prompt("Hello! What is your name","");
+name=getCookie("quizUserName"); 
+if (name=="") {name=prompt("Hello! What is your name","");};
 if (name=="") {alert("You must enter your name");}
-else {alert("Hello "+name); document.getElementById("name").innerHTML="<h2>"+name+"</h2>"; break};}
+else {alert("Hello "+name); setCookie("quizUserName", name, 365); document.getElementById("name").innerHTML="<h2>"+name+"</h2>"; break};}
 document . getElementById ( 'screen' ). innerHTML =q1; 
 };
 function qf2(){
@@ -29,8 +57,23 @@ document.getElementById("screen").innerHTML=q4;
 function qf5(){
 document.getElementById("screen").innerHTML=q5;
 };
+function qf6(){
+document.getElementById("screen").innerHTML=q6;
+};
+function qf7(){
+document.getElementById("screen").innerHTML=q7;
+};
+function qf8(){
+document.getElementById("screen").innerHTML=q8;
+};
+function qf9(){
+document.getElementById("screen").innerHTML=q9;
+};
+function qf10(){
+document.getElementById("screen").innerHTML=q10;
+};
 function end(){
-document.getElementById("screen").innerHTML="<h3>The end</h3><p/>You scored "+score+" points out of a possible 50 points";
+document.getElementById("screen").innerHTML="<h3>The end</h3><p/>You scored "+score+" points out of a possible 100 points";
 };
 var s=0, m=0;
 function ts(){
